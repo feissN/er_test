@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ERTool</title>
+
+    <style>
+      html {
+        background: #323232;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+    </style>
+  </head>
+  <body>
+    <input type="number" placeholder="Anzahl" />
+    <button>Add runes</button>
+
+    <script>
+      const input = document.querySelector("input");
+      const button = document.querySelector("button");
+
+      button.addEventListener("click", async () => {
+        const response = await fetch("http://localhost:3000/add_runes", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ amount: input.value }),
+        });
+      });
+    </script>
+  </body>
+</html>
